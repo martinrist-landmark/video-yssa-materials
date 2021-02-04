@@ -99,10 +99,8 @@ final class Library: ObservableObject {
       sortedBooks.remove(atOffsets: offsets)
     }
 
-    for change in booksCache.difference(from: booksBeforeDeletion) {
-      if case .remove(_, let deletedBook, _) = change {
-        uiImages[deletedBook] = nil
-      }
+    for case .remove(_, let deletedBook, _) in booksCache.difference(from: booksBeforeDeletion) {
+      uiImages[deletedBook] = nil
     }
   }
 
